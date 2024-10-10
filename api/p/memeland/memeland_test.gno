@@ -156,8 +156,9 @@ func TestGetPostsInRangeByUpvote(t *testing.T) {
 	}
 
 	// Count the number of posts returned in the JSON string as a rudimentary check for correct pagination/filtering
+
 	postCount := strings.Count(jsonStr, `"id":"`)
-	if postCount != m.MemeCounter {
+	if seqid.ID(postCount) != m.MemeCounter {
 		t.Errorf("Expected %d posts in the JSON string, but found %d", m.MemeCounter, postCount)
 	}
 
